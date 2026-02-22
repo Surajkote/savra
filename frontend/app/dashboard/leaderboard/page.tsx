@@ -1,10 +1,11 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import {
     Chart as ChartJS,
     CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import type { TooltipItem } from "chart.js";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -70,11 +71,12 @@ export default function LeaderboardPage() {
                 borderWidth: 1,
                 padding: 14,
                 callbacks: {
-                    title: (ctx: { label: string }[]) => ctx[0].label,
-                    label: (ctx: { dataIndex: number; parsed: { y: number } }) => {
+                    title: (ctx: TooltipItem<"bar">[]) => ctx[0]?.label ?? "",
+                    label: (ctx: TooltipItem<"bar">) => {
                         const t = sorted[ctx.dataIndex];
+                        const y = ctx.parsed.y ?? 0;
                         return [
-                            `  Score: ${ctx.parsed.y.toFixed(2)} / 10`,
+                            `  Score: ${y.toFixed(2)} / 10`,
                             `  Assessments: ${t.assessments}`,
                             `  Grades taught: ${t.grades_taught.join(", ")}`,
                         ];
@@ -94,7 +96,7 @@ export default function LeaderboardPage() {
                     display: true,
                     text: "Teachers",
                     color: "#64748b",
-                    font: { size: 13, weight: "600" as const },
+                    font: { size: 13, weight: 600 as const },
                 },
             },
             y: {
@@ -106,7 +108,7 @@ export default function LeaderboardPage() {
                     display: true,
                     text: "Relative Teacher Performance",
                     color: "#64748b",
-                    font: { size: 13, weight: "600" as const },
+                    font: { size: 13, weight: 600 as const },
                 },
             },
         },
