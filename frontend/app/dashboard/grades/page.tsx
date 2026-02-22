@@ -84,8 +84,10 @@ export default function GradesPage() {
                 titleColor: "#f1f5f9",
                 bodyColor: "#94a3b8",
                 callbacks: {
-                    label: (ctx: { parsed: { y: number } }) =>
-                        `  ${ctx.parsed.y} assessment${ctx.parsed.y !== 1 ? "s" : ""}`,
+                    label: (ctx: import('chart.js').TooltipItem<'bar'>) => {
+                        const v = ctx.parsed.y ?? 0;
+                        return `  ${v} assessment${v !== 1 ? 's' : ''}`;
+                    },
                 },
             },
         },
@@ -93,13 +95,13 @@ export default function GradesPage() {
             x: {
                 grid: { color: "rgba(255,255,255,0.04)" },
                 ticks: { color: "#94a3b8" },
-                title: { display: true, text: "Grade", color: "#64748b", font: { size: 12, weight: "600" as const } },
+                title: { display: true, text: "Grade", color: "#64748b", font: { size: 12, weight: 600 as const } },
             },
             y: {
                 beginAtZero: true,
                 grid: { color: "rgba(255,255,255,0.05)" },
                 ticks: { color: "#94a3b8", stepSize: 1 },
-                title: { display: true, text: "No. of Assessments", color: "#64748b", font: { size: 12, weight: "600" as const } },
+                title: { display: true, text: "No. of Assessments", color: "#64748b", font: { size: 12, weight: 600 as const } },
             },
         },
     };
@@ -134,8 +136,10 @@ export default function GradesPage() {
                 titleColor: "#f1f5f9",
                 bodyColor: "#94a3b8",
                 callbacks: {
-                    label: (ctx: { label: string; parsed: number }) =>
-                        `  ${ctx.label}: ${ctx.parsed} assessment${ctx.parsed !== 1 ? "s" : ""}`,
+                    label: (ctx: import('chart.js').TooltipItem<'doughnut'>) => {
+                        const v = ctx.parsed;
+                        return `  ${ctx.label}: ${v} assessment${v !== 1 ? 's' : ''}`;
+                    },
                 },
             },
         },
@@ -163,7 +167,6 @@ export default function GradesPage() {
             {!detailLoading && detail && barData && (
                 <>
                     <div className="chart-row">
-                        {/* Bar chart */}
                         <div className="card" style={{ height: 360 }}>
                             <div className="card-title">Assessments — Grade {detail.grade}</div>
                             <div style={{ height: "290px" }}>
@@ -171,7 +174,6 @@ export default function GradesPage() {
                             </div>
                         </div>
 
-                        {/* Donut chart */}
                         <div className="card" style={{ height: 360 }}>
                             <div className="card-title">Teacher Contribution (by assessments)</div>
                             {donutTeachers.length > 0 ? (
@@ -186,7 +188,6 @@ export default function GradesPage() {
                         </div>
                     </div>
 
-                    {/* Teachers list */}
                     <div className="card" style={{ marginTop: 4 }}>
                         <div className="card-title">Teachers for Grade {detail.grade}</div>
                         <div className="teacher-tags">
