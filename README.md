@@ -105,14 +105,18 @@ Vercel does not support a persistent filesystem for serverless functions, so the
 **Auth**: `sessionStorage` is intentional for this audience (single-device, browser-tab lifetime). Moving to JWT tokens with an `/auth/login` endpoint would be the first step for multi-device or persistent sessions.
 
 
-
+---
 
 ## Access the insights dashboard at this link: **https://savra-frontend.vercel.app/**
 ## USE THESE LOGIN CREDENTIALS TO SIGN IN:
 USERNAME:principal
+
 PASSWORD:savra@school
+
 
 OR
 
+
 USERNAME:admin 
+
 PASSWORD:savra2024
