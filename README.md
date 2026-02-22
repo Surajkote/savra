@@ -107,4 +107,12 @@ Vercel does not support a persistent filesystem for serverless functions, so the
 
 
 
-##Access the insights dashboard at this link: **https://savra-frontend.vercel.app/**
+## Access the insights dashboard at this link: **https://savra-frontend.vercel.app/**
+## USE THESE LOGIN CREDENTIALS TO SIGN IN:
+USERNAME:principal
+PASSWORD:savra@school
+
+OR
+
+USERNAME:admin 
+PASSWORD:savra2024
