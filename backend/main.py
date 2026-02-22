@@ -16,7 +16,7 @@ app.add_middleware(
 )
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-EXCEL_PATH = os.path.join(BASE_DIR, "..", "Savra_Teacher Data Set-1 copy.xlsx")
+EXCEL_PATH = os.path.join(BASE_DIR, "Savra_Teacher Data Set-1 copy.xlsx")
 
 
 def load_data() -> pd.DataFrame:
