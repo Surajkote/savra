@@ -103,3 +103,8 @@ Vercel does not support a persistent filesystem for serverless functions, so the
 **Scoring**: The normalised score formula weights assessments at 60% and lessons at 40%. Both constants are at the top of `compute_leaderboard` and straightforward to expose as admin-configurable via a settings endpoint.
 
 **Auth**: `sessionStorage` is intentional for this audience (single-device, browser-tab lifetime). Moving to JWT tokens with an `/auth/login` endpoint would be the first step for multi-device or persistent sessions.
+
+
+
+
+##Access the insights dashboard at this link: **https://savra-frontend.vercel.app/**
